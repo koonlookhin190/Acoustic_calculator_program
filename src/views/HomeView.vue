@@ -61,14 +61,14 @@
           <div>
             <span>ปริมาณ</span>
           </div>
-          <span class="metres">เมตร</span>
+          <span class="metres">ตารางเมตร</span>
         </div>
 
         <div>
           <div>
             <span>พื้นที่ชั้นทั้งหมด</span>
           </div>
-          <span class="metres">เมตร</span>
+          <span class="metres">ตารางเมตร</span>
         </div>
       </div>
       <div class="col-lg-4">
@@ -76,14 +76,14 @@
           <div>
             <span>พื้นที่ผนังทั้งหมด</span>
           </div>
-          <span class="metres">เมตร</span>
+          <span class="metres">ตารางเมตร</span>
         </div>
 
         <div>
           <div>
             <span>พื้นที่เซลล์ทั้งหมด</span>
           </div>
-          <span class="metres">เมตร</span>
+          <span class="metres">ตารางเมตร</span>
         </div>
       </div>
     </div>
