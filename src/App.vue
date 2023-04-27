@@ -1,6 +1,8 @@
 <template>
   <div class="row">
-    <div class="col-lg-12">Logo</div>
+    <div class="col-lg-12">
+      <img src="./assets/logo.png" class="image" />
+    </div>
   </div>
   <router-view />
 </template>
@@ -8,6 +10,10 @@
 export default {}
 </script>
 <style>
+.image {
+  width: 150px;
+  height: 75px;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
