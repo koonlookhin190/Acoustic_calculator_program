@@ -1,11 +1,12 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <div class="row">
+    <div class="col-lg-12">Logo</div>
+  </div>
   <router-view />
 </template>
-
+<script>
+export default {}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -27,4 +28,5 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+@import '~bootstrap/dist/css/bootstrap.css';
 </style>
