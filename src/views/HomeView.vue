@@ -37,7 +37,7 @@
               <span class="inputlabel">กว้าง</span>
             </div>
             <Field
-              class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+              class="inputField"
               type="input"
               name="width"
               placeholder="width"
@@ -49,7 +49,7 @@
               <span class="inputlabel">ยาว</span>
             </div>
             <Field
-              class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+              class="inputField"
               type="input"
               name="length"
               placeholder="length"
@@ -61,15 +61,15 @@
               <span class="inputlabel">สูง</span>
             </div>
             <Field
-              class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+              class="inputField"
               type="input"
               name="height"
               placeholder="height"
             />
             <span class="metres">เมตร</span>
           </div>
-          <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
-            cal
+          <button type="submit" class="button btn btn-secondary">
+            Calculate
           </button>
         </Form>
       </div>
@@ -77,37 +77,62 @@
       <div class="col-lg-4">
         <div>
           <div>
-            <span>ปริมาณ</span>
+            <span class="outputLabel">ปริมาณ</span>
           </div>
-          <span class="metres">ตารางเมตร</span>
+          <div class="box">
+            <div class="resultBox">
+              <span v-if="GStore.resultCal != null">
+                {{ GStore.resultCal.volume }}
+              </span>
+            </div>
+            <span class="metres">ตารางเมตร</span>
+          </div>
         </div>
 
         <div>
           <div>
-            <span>พื้นที่ชั้นทั้งหมด</span>
+            <span class="outputLabel">พื้นที่ชั้นทั้งหมด</span>
           </div>
-          <span class="metres">ตารางเมตร</span>
+          <div class="box">
+            <div class="resultBox">
+              <span v-if="GStore.resultCal != null">
+                {{ GStore.resultCal.total_floor_area }}
+              </span>
+            </div>
+            <span class="metres">ตารางเมตร</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-4">
         <div>
           <div>
-            <span>พื้นที่ผนังทั้งหมด</span>
+            <span class="outputLabel">พื้นที่ผนังทั้งหมด</span>
           </div>
-          <span class="metres">ตารางเมตร</span>
+          <div class="box">
+            <div class="resultBox">
+              <span v-if="GStore.resultCal != null">
+                {{ GStore.resultCal.total_wall_area }}
+              </span>
+            </div>
+            <span class="metres">ตารางเมตร</span>
+          </div>
         </div>
 
         <div>
           <div>
-            <span>พื้นที่เซลล์ทั้งหมด</span>
+            <span class="outputLabel">พื้นที่เซลล์ทั้งหมด</span>
           </div>
-          <span class="metres">ตารางเมตร</span>
+          <div class="box">
+            <div class="resultBox">
+              <span v-if="GStore.resultCal != null">
+                {{ GStore.resultCal.total_celling_area }}
+              </span>
+            </div>
+            <span class="metres">ตารางเมตร</span>
+          </div>
         </div>
       </div>
     </div>
-    <span v-if="GStore.resultCal != null">
-      {{ GStore.resultCal.total_celling_area }}
-    </span>
   </div>
 </template>
 
@@ -172,5 +197,24 @@ span {
 }
 .inputlabel {
   padding-right: 30px;
+}
+.box {
+  display: inline-flex;
+}
+.resultBox {
+  border: solid;
+  width: 200px;
+  height: 30px;
+  background-color: #fb8b24;
+}
+.inputField {
+  background-color: #faf0e6;
+}
+.outputLabel {
+  padding-right: 70px;
+}
+.button {
+  margin-top: 20px;
+  margin-right: 40px;
 }
 </style>
