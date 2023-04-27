@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-lg-12">
+    <div class="containerApp col-lg-12">
       <img src="./assets/logo.png" class="image" />
     </div>
   </div>
@@ -10,6 +10,10 @@
 export default {}
 </script>
 <style>
+.containerApp {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 .image {
   width: 150px;
   height: 75px;

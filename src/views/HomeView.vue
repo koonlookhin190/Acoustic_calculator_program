@@ -39,6 +39,7 @@ export default {}
   padding: 20px;
   border-left: solid 1px;
   border-right: solid 1px;
+  border-top: solid 1px;
 }
 h3 {
   color: #fb8b24;
