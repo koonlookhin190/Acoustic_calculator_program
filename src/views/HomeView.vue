@@ -28,6 +28,65 @@
     <div class="col-lg-12">
       <img src="../assets/figure.png" class="image" />
     </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <form id="">
+          <div>
+            <div>
+              <span class="inputlabel">กว้าง</span>
+            </div>
+            <input class="inputbar" type="text" id="width" />
+            <span class="metres">เมตร</span>
+          </div>
+          <div>
+            <div>
+              <span class="inputlabel">ยาว</span>
+            </div>
+            <input class="inputbar" type="text" id="lenght" />
+            <span class="metres">เมตร</span>
+          </div>
+          <div>
+            <div>
+              <span class="inputlabel">สูง</span>
+            </div>
+            <input class="inputbar" type="text" id="height" />
+            <span class="metres">เมตร</span>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-4">
+        <div>
+          <div>
+            <span>ปริมาณ</span>
+          </div>
+          <span class="metres">เมตร</span>
+        </div>
+
+        <div>
+          <div>
+            <span>พื้นที่ชั้นทั้งหมด</span>
+          </div>
+          <span class="metres">เมตร</span>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div>
+          <div>
+            <span>พื้นที่ผนังทั้งหมด</span>
+          </div>
+          <span class="metres">เมตร</span>
+        </div>
+
+        <div>
+          <div>
+            <span>พื้นที่เซลล์ทั้งหมด</span>
+          </div>
+          <span class="metres">เมตร</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -61,5 +120,11 @@ span {
 .image {
   width: 600px;
   height: 400px;
+}
+.metres {
+  padding-left: 10px;
+}
+.inputlabel {
+  padding-right: 30px;
 }
 </style>
