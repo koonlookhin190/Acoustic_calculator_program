@@ -31,29 +31,47 @@
 
     <div class="row">
       <div class="col-lg-4">
-        <form id="">
+        <Form @submit="submit" :validation-schema="schema">
           <div>
             <div>
               <span class="inputlabel">กว้าง</span>
             </div>
-            <input class="inputbar" type="text" id="width" />
+            <Field
+              class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+              type="input"
+              name="width"
+              placeholder="width"
+            />
             <span class="metres">เมตร</span>
           </div>
           <div>
             <div>
               <span class="inputlabel">ยาว</span>
             </div>
-            <input class="inputbar" type="text" id="lenght" />
+            <Field
+              class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+              type="input"
+              name="length"
+              placeholder="length"
+            />
             <span class="metres">เมตร</span>
           </div>
           <div>
             <div>
               <span class="inputlabel">สูง</span>
             </div>
-            <input class="inputbar" type="text" id="height" />
+            <Field
+              class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+              type="input"
+              name="height"
+              placeholder="height"
+            />
             <span class="metres">เมตร</span>
           </div>
-        </form>
+          <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
+            cal
+          </button>
+        </Form>
       </div>
 
       <div class="col-lg-4">
@@ -87,11 +105,39 @@
         </div>
       </div>
     </div>
+    <span v-if="GStore.resultCal != null">
+      {{ GStore.resultCal.total_celling_area }}
+    </span>
   </div>
 </template>
 
 <script>
-export default {}
+import CalculateService from '@/services/CalculateService.js'
+import { Form, Field } from 'vee-validate'
+import * as yup from 'yup'
+export default {
+  inject: ['GStore'],
+  components: {
+    Form,
+    Field
+  },
+  data() {
+    const schema = yup.object().shape({
+      width: yup.string(),
+      length: yup.string(),
+      height: yup.string()
+    })
+    return {
+      schema
+    }
+  },
+  methods: {
+    submit(schema) {
+      console.log(schema)
+      CalculateService.getCalculate(schema)
+    }
+  }
+}
 </script>
 <style scoped>
 .container {
