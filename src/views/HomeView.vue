@@ -133,6 +133,42 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="blog col-lg-12">
+        <div class="title3">
+          <h3>วัสดุและการคำนวณ</h3>
+        </div>
+        <span
+          >โปรดเลือกวัสดุในพื้นที่ผิวผนังแต่ละด้านของห้อง
+          ในกรณีที่มีหลายวัสดึในหนึ่งด้านให้กดปุ่มเพิ่มเติมเพื่อเลือกวัสดุอื่นในพื้นที่ผิวนั้นๆ<br />
+          และใส่ขนาดพื้นที่ของวัสดุนั้นๆ
+          ให้ใช้วิธีเดียวกันในนี้ในด้านที่มีประตูและหน้าต่าง</span
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="container2 greybox">
+          <div class="row">
+            <div class="inputcol col-lg-4">
+              <span> ผนังด้านหน้า </span>
+              <input class="inputbox" type="text" />
+            </div>
+            <div class="dropdownlist col-lg-4">
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>เลือกวัสดุ . . .</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-lg-4">
+              <span class="addBox">+ Add materials</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -188,6 +224,10 @@ span {
 .title2 {
   margin-right: 1000px;
 }
+.title3 {
+  margin-top: 100px;
+  margin-right: 1000px;
+}
 .image {
   width: 600px;
   height: 400px;
@@ -216,5 +256,27 @@ span {
 .button {
   margin-top: 20px;
   margin-right: 40px;
+}
+.greybox {
+  margin: auto;
+  width: 50%;
+  border: solid;
+  padding: 10px;
+  background-color: #d9d9d9;
+}
+.inputcol {
+  display: inline-block;
+}
+.inputbox {
+  margin-top: 5px;
+  margin-right: 20px;
+  width: 50px;
+}
+.dropdownlist {
+  margin-top: 5px;
+  width: 100px;
+}
+.addBox {
+  margin-left: 60px;
 }
 </style>
