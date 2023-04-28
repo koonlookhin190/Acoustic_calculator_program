@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+import MaterialService from '@/services/MaterialService'
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter: () => {
+      return MaterialService.getMaterial()
+    }
   },
   {
     path: '/about',

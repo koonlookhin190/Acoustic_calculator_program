@@ -153,21 +153,26 @@
             <div class="inputcol col-lg-4">
               <span> ผนังด้านหน้า </span>
               <input class="inputbox" type="text" />
+              <BaseSelectVue
+                :options="GStore.material"
+                v-model="materialSet.material1"
+              />
+              <BaseSelectVue
+                :options="GStore.material"
+                v-model="materialSet.material2"
+              />
             </div>
-            <div class="dropdownlist col-lg-4">
-              <select class="custom-select" id="inputGroupSelect01">
-                <option selected>เลือกวัสดุ . . .</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
+            <div class="dropdownlist col-lg-4"></div>
             <div class="col-lg-4">
               <span class="addBox">+ Add materials</span>
             </div>
           </div>
         </div>
       </div>
+      {{ materialSet.material1}}
+      {{ materialSet.material2}}
+      {{ GStore.keep }}
+      <button @click="calCulate">Presss it</button>
     </div>
   </div>
 </template>
@@ -176,11 +181,13 @@
 import CalculateService from '@/services/CalculateService.js'
 import { Form, Field } from 'vee-validate'
 import * as yup from 'yup'
+import BaseSelectVue from '@/components/BaseSelect.vue'
 export default {
   inject: ['GStore'],
   components: {
     Form,
-    Field
+    Field,
+    BaseSelectVue
   },
   data() {
     const schema = yup.object().shape({
@@ -189,14 +196,23 @@ export default {
       height: yup.string()
     })
     return {
-      schema
+      schema,
+      materialSet: {
+        material1: {},
+        material2: {},
+        material3: {},
+        material4: {},
+        material5: {}
+      }
     }
   },
   methods: {
     submit(schema) {
       console.log(schema)
+      console.log(JSON.stringify(this.material))
       CalculateService.getCalculate(schema)
-    }
+    },
+    calCulate() {}
   }
 }
 </script>

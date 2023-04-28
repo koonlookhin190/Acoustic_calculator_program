@@ -1,5 +1,7 @@
 import { reactive } from 'vue'
 
 export default reactive({
-  resultCal: null
+  resultCal: null,
+  material: null,
+  keep: {}
 })
