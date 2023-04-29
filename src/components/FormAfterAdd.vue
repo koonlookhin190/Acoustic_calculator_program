@@ -3,15 +3,15 @@
     <div>
       <div class="col-lg-12 boxtest">
         <div class="addelement row">
-          <span class="title">ผนังด้านหน้า</span>
+          <span class="title">{{ info.name }}</span>
           <div class="textelement">
-            <span>Material: |</span>
-            <span> Input: |</span>
-            <span> Hz250: |</span>
-            <span> Hz500: |</span>
-            <span> Hz1k: |</span>
-            <span> Hz2k: |</span>
-            <span> Hz4k: |</span>
+            <span>Material: {{ info.selected }}| </span>
+            <span> Input: {{ info.input }}| </span>
+            <span> Hz250: {{ info.hz250 }}| </span>
+            <span> Hz500: {{ info.hz500 }}| </span>
+            <span> Hz1k: {{ info.k1 }}| </span>
+            <span> Hz2k: {{ info.k2 }}| </span>
+            <span> Hz4k: {{ info.k4 }}| </span>
             <button class="removebtn btn btn-danger">Remove</button>
           </div>
         </div>
@@ -21,7 +21,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    info: {
+      type: Object,
+      required: true
+    }
+  }
+}
 </script>
 
 <style>

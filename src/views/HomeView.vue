@@ -144,17 +144,37 @@
         >
       </div>
       <FormBefore label="ผนังด้านหน้า" />
-      <span v-if="GStore.frontWall != null">{{ GStore.frontWall }}</span>
+      <FormAfterAdd
+        v-for="info in GStore.frontWall"
+        :key="info.id"
+        :info="info"
+      />
       <FormBefore label="ผนังด้านซ้าย" />
-      <span v-if="GStore.leftWall != null">{{ GStore.leftWall }}</span>
+      <FormAfterAdd
+        v-for="info in GStore.leftWall"
+        :key="info.id"
+        :info="info"
+      />
       <FormBefore label="ผนังด้านขวา" />
-      <span v-if="GStore.rightWall != null">{{ GStore.rightWall }}</span>
+      <FormAfterAdd
+        v-for="info in GStore.rightWall"
+        :key="info.id"
+        :info="info"
+      />
       <FormBefore label="ผนังด้านหลัง" />
-      <span v-if="GStore.behindWall != null">{{ GStore.behindWall }}</span>
+      <FormAfterAdd
+        v-for="info in GStore.behindWall"
+        :key="info.id"
+        :info="info"
+      />
       <FormBefore label="พื้น" />
-      <span v-if="GStore.floor != null">{{ GStore.floor }}</span>
+      <FormAfterAdd v-for="info in GStore.floor" :key="info.id" :info="info" />
       <FormBefore label="เพดาน" />
-      <span v-if="GStore.ceiling != null">{{ GStore.ceiling }}</span>
+      <FormAfterAdd
+        v-for="info in GStore.ceiling"
+        :key="info.id"
+        :info="info"
+      />
     </div>
   </div>
 </template>
@@ -163,13 +183,15 @@
 import CalculateService from '@/services/CalculateService.js'
 import { Form, Field } from 'vee-validate'
 import FormBefore from '@/components/FormBefore.vue'
+import FormAfterAdd from '@/components/FormAfterAdd.vue'
 import * as yup from 'yup'
 export default {
   inject: ['GStore'],
   components: {
     Form,
     Field,
-    FormBefore
+    FormBefore,
+    FormAfterAdd
   },
   data() {
     const schema = yup.object().shape({
