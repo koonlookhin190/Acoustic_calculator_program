@@ -7,11 +7,15 @@
             <label v-if="label">{{ label }}</label>
           </div>
           <div class="col-lg-3">
-            <input class="inputbox" type="text" v-model="input" />
+            <input class="inputbox" type="text" v-model="input" required />
             <span class="msquare">m²</span>
           </div>
           <div class="dropdownlist col-lg-3">
-            <BaseSelectVue :options="GStore.material" v-model="selected" />
+            <BaseSelectVue
+              :options="GStore.material"
+              v-model="selected"
+              required
+            />
           </div>
           <div class="addBox col-lg-3">
             <button class="btn btn-warning">+Add materials</button>

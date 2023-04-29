@@ -5,15 +5,15 @@
         <div class="addelement row">
           <span class="title">{{ info.name }}</span>
           <div class="textelement">
-            <span>Material: {{ info.selected }}| </span>
+            <span>Material: {{ info.selected }} | </span>
             <span> Input: {{ info.input }}| </span>
             <span> Hz250: {{ info.hz250 }}| </span>
             <span> Hz500: {{ info.hz500 }}| </span>
             <span> Hz1k: {{ info.k1 }}| </span>
             <span> Hz2k: {{ info.k2 }}| </span>
             <span> Hz4k: {{ info.k4 }}| </span>
-            <button class="removebtn btn btn-danger">Remove</button>
           </div>
+          <button class="removebtn btn btn-danger">Remove</button>
         </div>
       </div>
     </div>
@@ -40,13 +40,12 @@ export default {
   background-color: #faf0e6;
 }
 .textelement {
-  margin-left: 90px;
   margin-top: 8px;
   letter-spacing: 0.5px;
-  display: inline-flex;
+  display: inline;
 }
 .removebtn {
-  margin-left: 280px;
+  margin: 0 auto;
   margin-bottom: 5px;
   width: 10%;
 }
