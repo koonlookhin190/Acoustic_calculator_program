@@ -4,15 +4,11 @@
       <div class="container2 greybox">
         <div class="row">
           <div class="inputcol col-lg-4">
-            <span> ผนังด้านหน้า </span>
+            <label v-if="label">{{ label }}</label>
             <input class="inputbox" type="text" />
             <BaseSelectVue
               :options="GStore.material"
               v-model="materialSet.material1"
-            />
-            <BaseSelectVue
-              :options="GStore.material"
-              v-model="materialSet.material2"
             />
           </div>
           <div class="dropdownlist col-lg-4"></div>
@@ -45,6 +41,12 @@ export default {
         material4: {},
         material5: {}
       }
+    }
+  },
+  props: {
+    label: {
+      type: String,
+      default: ''
     }
   }
 }

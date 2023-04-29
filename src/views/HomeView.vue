@@ -145,7 +145,11 @@
           ให้ใช้วิธีเดียวกันในนี้ในด้านที่มีประตูและหน้าต่าง</span
         >
       </div>
-      <FormBefore />
+      <FormBefore label="ผนังด้านหน้า" />
+      <FormBefore label="ผนังด้านซ้าย" />
+      <FormBefore label="ผนังด้านขวา" />
+      <FormBefore label="พื้น" />
+      <FormBefore label="เพดาน" />
     </div>
   </div>
 </template>
