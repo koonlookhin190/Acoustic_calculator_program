@@ -68,9 +68,7 @@
             />
             <span class="metres">เมตร</span>
           </div>
-          <button type="submit" class="button btn btn-secondary">
-            Calculate
-          </button>
+          <button type="submit" class="button btn">Calculate</button>
         </Form>
       </div>
 
@@ -248,5 +246,7 @@ span {
 .button {
   margin-top: 20px;
   margin-right: 40px;
+  background-color: #36454f;
+  color: white;
 }
 </style>

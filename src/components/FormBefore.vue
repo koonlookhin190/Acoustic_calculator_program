@@ -1,14 +1,14 @@
 <template>
   <div class="row">
     <form @submit.prevent="onSubmit">
-      <div class="container2 greybox">
+      <div class="greybox">
         <div class="row">
           <div class="inputcol col-lg-3">
             <label v-if="label">{{ label }}</label>
           </div>
-          <div class="msquare col-lg-3">
+          <div class="col-lg-3">
             <input class="inputbox" type="text" v-model="input" />
-            m²
+            <span class="msquare">m²</span>
           </div>
           <div class="dropdownlist col-lg-3">
             <BaseSelectVue :options="GStore.material" v-model="selected" />
@@ -85,11 +85,12 @@ export default {
   width: 75%;
   border: solid;
   padding: 10px;
-  background-color: #d9d9d9;
+  background-color: #405b6f;
 }
 .inputcol {
   margin-top: 8px;
   display: inline-block;
+  color: white;
 }
 .inputbox {
   background: #faf0e6;
@@ -108,5 +109,6 @@ export default {
 }
 .msquare {
   margin-bottom: 8px;
+  color: white;
 }
 </style>
