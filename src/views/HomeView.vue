@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="blog col-lg-12">
+      <div class="blog col-lg-12 animate__animated animate__fadeInUp">
         <div class="title">
           <h3>วิธีใช้งาน</h3>
         </div>
@@ -12,7 +12,7 @@
           ในช่วงความถี่ต่างๆ</span
         >
       </div>
-      <div class="blog col-lg-12">
+      <div class="blog col-lg-12 animate__animated animate__fadeInUp">
         <div class="title2">
           <h3>พื้นที่และปริมาตร</h3>
         </div>
@@ -271,4 +271,5 @@ span {
   background-color: #36454f;
   color: white;
 }
+@import 'animate.css';
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <form @submit.prevent="onDelete">
-      <div class="col-lg-12 boxtest">
+      <div class="col-lg-12 boxtest animate__animated animate__fadeInRight">
         <div class="addelement row">
           <span class="title">{{ info.name }}</span>
           <div class="textelement">
@@ -86,4 +86,5 @@ export default {
   margin-bottom: 5px;
   width: 10%;
 }
+@import 'animate.css';
 </style>
