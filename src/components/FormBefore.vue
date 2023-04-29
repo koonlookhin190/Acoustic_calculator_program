@@ -1,34 +1,31 @@
 <template>
   <div class="row">
-    <div>
+    <form @submit.prevent="onSubmit">
       <div class="container2 greybox">
         <div class="row">
           <div class="inputcol col-lg-3">
             <label v-if="label">{{ label }}</label>
           </div>
           <div class="msquare col-lg-3">
-            <input class="inputbox" type="text" /> m²
+            <input class="inputbox" type="text" v-model="input" />
+            m²
           </div>
           <div class="dropdownlist col-lg-3">
-            <BaseSelectVue
-              :options="GStore.material"
-              v-model="materialSet.material1"
-            />
+            <BaseSelectVue :options="GStore.material" v-model="selected" />
           </div>
           <div class="addBox col-lg-3">
             <button class="btn btn-warning">+Add materials</button>
           </div>
         </div>
       </div>
-    </div>
-    {{ materialSet.material1 }}
-    {{ materialSet.material2 }}
-    {{ GStore.keep }}
+    </form>
   </div>
 </template>
 
 <script>
 import BaseSelectVue from '@/components/BaseSelect.vue'
+import CalculateService from '@/services/CalculateService'
+import MaterialService from '@/services/MaterialService'
 export default {
   inject: ['GStore'],
   components: {
@@ -36,12 +33,40 @@ export default {
   },
   data() {
     return {
-      materialSet: {
-        material1: {},
-        material2: {},
-        material3: {},
-        material4: {},
-        material5: {}
+      name: this.label,
+      selected: '',
+      input: ''
+    }
+  },
+  methods: {
+    onSubmit() {
+      let inputMaterial = {
+        name: this.name,
+        selected: this.selected,
+        input: this.input
+      }
+      console.log(inputMaterial)
+      CalculateService.calculateMaterial(inputMaterial)
+      alert('Adding' + ' ' + this.name + ' ' + 'successfully')
+      this.$emit('comment-submited', inputMaterial)
+      ;(this.name = this.label), (this.selected = ''), (this.input = '')
+      if (this.name == 'ผนังด้านหน้า') {
+        MaterialService.getFrontWall()
+      }
+      if (this.name == 'ผนังด้านซ้าย') {
+        MaterialService.getLeftWall()
+      }
+      if (this.name == 'ผนังด้านขวา') {
+        MaterialService.getRightWall()
+      }
+      if (this.name == 'ผนังด้านหลัง') {
+        MaterialService.getBehindWall()
+      }
+      if (this.name == 'พื้น') {
+        MaterialService.getFloor()
+      }
+      if (this.name == 'เพดาน') {
+        MaterialService.getCeiling()
       }
     }
   },

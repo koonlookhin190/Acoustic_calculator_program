@@ -1,12 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MaterialService from '@/services/MaterialService'
+import GStore from '@/store'
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView,
     beforeEnter: () => {
+      if (GStore.frontWall == null) {
+        MaterialService.getFrontWall()
+      }
+      if (GStore.frontWall == null) {
+        MaterialService.getLeftWall()
+      }
+      if (GStore.frontWall == null) {
+        MaterialService.getRightWall()
+      }
+      if (GStore.frontWall == null) {
+        MaterialService.getBehindWall()
+      }
+      if (GStore.frontWall == null) {
+        MaterialService.getFloor()
+      }
+      if (GStore.frontWall == null) {
+        MaterialService.getCeiling()
+      }
       return MaterialService.getMaterial()
     }
   },

@@ -13,5 +13,15 @@ export default {
       .catch((error) => {
         return console.log(error)
       })
+  },
+  calculateMaterial(inputMaterial) {
+    return apiClient
+      .post('/calculateMaterial', inputMaterial)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
   }
 }

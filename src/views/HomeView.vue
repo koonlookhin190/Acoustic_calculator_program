@@ -146,11 +146,17 @@
         >
       </div>
       <FormBefore label="ผนังด้านหน้า" />
+      <span v-if="GStore.frontWall != null">{{ GStore.frontWall }}</span>
       <FormBefore label="ผนังด้านซ้าย" />
+      <span v-if="GStore.leftWall != null">{{ GStore.leftWall }}</span>
       <FormBefore label="ผนังด้านขวา" />
+      <span v-if="GStore.rightWall != null">{{ GStore.rightWall }}</span>
       <FormBefore label="ผนังด้านหลัง" />
+      <span v-if="GStore.behindWall != null">{{ GStore.behindWall }}</span>
       <FormBefore label="พื้น" />
+      <span v-if="GStore.floor != null">{{ GStore.floor }}</span>
       <FormBefore label="เพดาน" />
+      <span v-if="GStore.ceiling != null">{{ GStore.ceiling }}</span>
     </div>
   </div>
 </template>

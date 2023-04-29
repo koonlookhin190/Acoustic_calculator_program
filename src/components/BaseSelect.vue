@@ -2,22 +2,19 @@
   <label v-if="label">{{ label }}</label>
   <select
     class="field"
-    :value="selectedOption.id"
+    :value="modelValue"
     v-bind="{
       ...$attrs,
-      onChange: ($event) => {
-        const selectedOption = options.find(
-          (option) => option.id === parseInt($event.target.value)
-        )
-        $emit('update:modelValue', selectedOption)
+      onChange: ($material) => {
+        $emit('update:modelValue', $material.target.value)
       }
     }"
   >
     <option
       v-for="option in options"
-      :value="option.id"
+      :value="option.name"
       :key="option.id"
-      :selected="option.id === selectedOption.id"
+      :selected="option.id === modelValue.id"
     >
       {{ option.name }}
     </option>
@@ -32,17 +29,12 @@ export default {
       default: ''
     },
     modelValue: {
-      type: Object,
-      default: null
+      type: [String, Number, Object],
+      default: ''
     },
     options: {
       type: Array,
       required: true
-    }
-  },
-  computed: {
-    selectedOption() {
-      return this.modelValue ? this.modelValue : this.options[0]
     }
   }
 }

@@ -7,7 +7,9 @@
   <router-view />
 </template>
 <script>
-export default {}
+export default {
+  inject: ['GStore']
+}
 </script>
 <style>
 .containerApp {
@@ -38,5 +40,6 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
 @import '~bootstrap/dist/css/bootstrap.css';
 </style>
