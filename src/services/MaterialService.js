@@ -91,5 +91,15 @@ export default {
       .catch((error) => {
         return console.log(error)
       })
+  },
+  deleteMaterial(deleteinfo) {
+    return apiClient
+      .post('/deleteMaterial', deleteinfo)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div>
+    <form @submit.prevent="onDelete">
       <div class="col-lg-12 boxtest">
         <div class="addelement row">
           <span class="title">{{ info.name }}</span>
@@ -16,12 +16,49 @@
           <button class="removebtn btn btn-danger">Remove</button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
+import MaterialService from '@/services/MaterialService'
 export default {
+  inject: ['GStore'],
+  data() {
+    return {
+      id: this.info.id,
+      name: this.info.name
+    }
+  },
+  methods: {
+    onDelete() {
+      let deleteInfo = {
+        id: this.id,
+        name: this.name
+      }
+      console.log(deleteInfo)
+      MaterialService.deleteMaterial(deleteInfo)
+      alert('Removing' + ' ' + this.info.name + ' ' + 'successfully')
+      if (this.name == 'ผนังด้านหน้า') {
+        MaterialService.getFrontWall()
+      }
+      if (this.name == 'ผนังด้านซ้าย') {
+        MaterialService.getLeftWall()
+      }
+      if (this.name == 'ผนังด้านขวา') {
+        MaterialService.getRightWall()
+      }
+      if (this.name == 'ผนังด้านหลัง') {
+        MaterialService.getBehindWall()
+      }
+      if (this.name == 'พื้น') {
+        MaterialService.getFloor()
+      }
+      if (this.name == 'เพดาน') {
+        MaterialService.getCeiling()
+      }
+    }
+  },
   props: {
     info: {
       type: Object,

@@ -11,21 +11,22 @@ const routes = [
       if (GStore.frontWall == null) {
         MaterialService.getFrontWall()
       }
-      if (GStore.frontWall == null) {
+      if (GStore.leftWall == null) {
         MaterialService.getLeftWall()
       }
-      if (GStore.frontWall == null) {
+      if (GStore.rightWall == null) {
         MaterialService.getRightWall()
       }
-      if (GStore.frontWall == null) {
+      if (GStore.behindWall == null) {
         MaterialService.getBehindWall()
       }
-      if (GStore.frontWall == null) {
+      if (GStore.floor == null) {
         MaterialService.getFloor()
       }
-      if (GStore.frontWall == null) {
+      if (GStore.ceiling == null) {
         MaterialService.getCeiling()
       }
+
       return MaterialService.getMaterial()
     }
   },
