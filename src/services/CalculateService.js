@@ -23,5 +23,16 @@ export default {
       .catch((error) => {
         return console.log(error)
       })
+  },
+  getCalculateR(volume) {
+    return apiClient
+      .post('/calculateAll', volume)
+      .then((response) => {
+        console.log(response.data)
+        GStore.graphBefore = response.data
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
   }
 }

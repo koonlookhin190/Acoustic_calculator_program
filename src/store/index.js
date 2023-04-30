@@ -9,5 +9,6 @@ export default reactive({
   rightWall: null,
   behindWall: null,
   ceiling: null,
-  floor: null
+  floor: null,
+  graphBefore: null
 })

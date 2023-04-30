@@ -175,6 +175,19 @@
         :key="info.id"
         :info="info"
       />
+      <button class="button btn" @click="calculateRt">Calculate</button>
+      <div v-if="GStore.graphBefore != null">
+        <span> 250 Hz : {{ GStore.graphBefore.at250 }}</span>
+        <span> 500 Hz :{{ GStore.graphBefore.at500 }}</span>
+        <span> 1k Hz :{{ GStore.graphBefore.atK1 }}</span>
+        <span> 2k Hz :{{ GStore.graphBefore.atK2 }}</span>
+        <span> 4k Hz :{{ GStore.graphBefore.atK4 }}</span>
+      </div>
+    </div>
+    <div>
+      <div v-if="GStore.graphBefore != null">
+        <BarChart />
+      </div>
       <ProductForm label="ผนังด้านหน้า" />
     </div>
   </div>
@@ -187,6 +200,8 @@ import FormBefore from '@/components/FormBefore.vue'
 import FormAfterAdd from '@/components/FormAfterAdd.vue'
 import * as yup from 'yup'
 import ProductForm from '@/components/ProductForm.vue'
+import GStore from '@/store'
+import BarChart from '@/components/LineChart.vue'
 export default {
   inject: ['GStore'],
   components: {
@@ -194,7 +209,8 @@ export default {
     Field,
     FormBefore,
     FormAfterAdd,
-    ProductForm
+    ProductForm,
+    BarChart
   },
   data() {
     const schema = yup.object().shape({
@@ -203,7 +219,8 @@ export default {
       height: yup.string()
     })
     return {
-      schema
+      schema,
+      chartKey: 0
     }
   },
   methods: {
@@ -211,6 +228,14 @@ export default {
       console.log(schema)
       console.log(JSON.stringify(this.material))
       CalculateService.getCalculate(schema)
+    },
+    calculateRt() {
+      let calR = {
+        volume: GStore.resultCal.volume
+      }
+      console.log(calR)
+      CalculateService.getCalculateR(calR)
+      this.chartKey += 1
     }
   }
 }
