@@ -175,7 +175,7 @@
         :key="info.id"
         :info="info"
       />
-      <button class="button btn" @click="calculateRt">Calculate</button>
+      <button class="beforert60cal" @click="calculateRt">Calculate</button>
       <div v-if="GStore.graphBefore != null">
         <span> 250 Hz : {{ GStore.graphBefore.at250 }}</span>
         <span> 500 Hz :{{ GStore.graphBefore.at500 }}</span>
@@ -243,9 +243,7 @@ export default {
 <style scoped>
 .container {
   padding: 20px;
-  border-left: solid 1px;
-  border-right: solid 1px;
-  border-top: solid 1px;
+  font-family: 'Kanit';
 }
 h3 {
   color: #fb8b24;
@@ -294,10 +292,39 @@ span {
   padding-right: 70px;
 }
 .button {
-  margin-top: 20px;
-  margin-right: 40px;
-  background-color: #36454f;
-  color: white;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #96baff;
+  border: 3px solid #121212;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 5px 5px 0px #000000;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  margin-right: 45px;
+}
+.beforert60cal {
+  padding: 1rem 2.7rem;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #96baff;
+  border: 3px solid #121212;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 5px 5px 0px #000000;
+  width: 15%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
 }
 
 @import 'animate.css';

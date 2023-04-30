@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div class="chart">
     <Line
       id="my-chart-id"
       :options="chartOptions"
       :data="chartData"
       :key="chartKey"
+      :height="500"
     />
   </div>
-  <button @click="refreshGraph">Refresh Graph</button>
+  <button @click="refreshGraph" class="refreshbtn">Refresh Graph</button>
 </template>
 <script>
 import { Line } from 'vue-chartjs'
@@ -87,3 +88,26 @@ export default {
   }
 }
 </script>
+
+<style>
+.refreshbtn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 1rem 2.7rem;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #fb8b24;
+  border: 3px solid #121212;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 5px 5px 0px #000000;
+}
+.chart {
+  padding: 20px;
+  border: solid;
+}
+</style>
