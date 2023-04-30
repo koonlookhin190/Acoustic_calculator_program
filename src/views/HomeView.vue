@@ -175,6 +175,7 @@
         :key="info.id"
         :info="info"
       />
+      <ProductForm label="ผนังด้านหน้า" />
     </div>
   </div>
 </template>
@@ -185,13 +186,15 @@ import { Form, Field } from 'vee-validate'
 import FormBefore from '@/components/FormBefore.vue'
 import FormAfterAdd from '@/components/FormAfterAdd.vue'
 import * as yup from 'yup'
+import ProductForm from '@/components/ProductForm.vue'
 export default {
   inject: ['GStore'],
   components: {
     Form,
     Field,
     FormBefore,
-    FormAfterAdd
+    FormAfterAdd,
+    ProductForm
   },
   data() {
     const schema = yup.object().shape({
@@ -271,5 +274,6 @@ span {
   background-color: #36454f;
   color: white;
 }
+
 @import 'animate.css';
 </style>

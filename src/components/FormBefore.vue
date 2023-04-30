@@ -115,4 +115,19 @@ export default {
   margin-bottom: 8px;
   color: white;
 }
+.productbox {
+  margin: auto;
+  width: 75%;
+  border: solid;
+  padding: 10px;
+  background-color: #faf0e6;
+}
+.textproductelement {
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+  display: inline;
+}
+.containForm {
+  display: inline-flex;
+}
 </style>

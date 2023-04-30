@@ -2,11 +2,11 @@
   <div class="row">
     <form @submit.prevent="onDelete">
       <div class="col-lg-12 boxtest animate__animated animate__fadeInRight">
-        <div class="addelement row">
+        <div class="row">
           <span class="title">{{ info.name }}</span>
           <div class="textelement">
             <span>Material: {{ info.selected }} | </span>
-            <span> Input: {{ info.input }}| </span>
+            <span> Area: {{ info.input }} m² | </span>
             <span> Hz250: {{ info.hz250 }}| </span>
             <span> Hz500: {{ info.hz500 }}| </span>
             <span> Hz1k: {{ info.k1 }}| </span>
