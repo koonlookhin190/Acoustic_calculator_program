@@ -1,9 +1,11 @@
 <template>
-  <div class="row">
-    <div class="containerApp col-lg-12">
-      <img src="./assets/logo.png" class="image" />
+  <section class="container-fluid welcomelogo">
+    <div class="row">
+      <div class="containerApp col-lg-12">
+        <img src="./assets/logo1.png" class="image" />
+      </div>
     </div>
-  </div>
+  </section>
   <router-view />
 </template>
 <script>
@@ -17,8 +19,8 @@ export default {
   padding-bottom: 20px;
 }
 .image {
-  width: 150px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -39,6 +41,9 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+.welcomelogo {
+  background-color: #ff9408;
 }
 
 @import '~bootstrap/dist/css/bootstrap.css';

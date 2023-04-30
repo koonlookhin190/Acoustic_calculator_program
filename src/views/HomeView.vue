@@ -1,136 +1,139 @@
 <template>
+  <section class="areacalculate">
+    <div class="container">
+      <div class="row">
+        <div class="blog col-lg-12 animate__animated animate__fadeInUp">
+          <div class="title">
+            <h3>วิธีใช้งาน</h3>
+          </div>
+          <span
+            >Hansolution acoustic calculator จะแสดงค่าความก้อง ของห้อง โดยคำนวณ
+            จาก ขนาด ความยาว ความกว้าง ความสูงของห้อง <br />
+            และวัสดุบนพื้นผิวในแต่ละด้านของห้อง แสดงผลออกมาเป็นกราฟ RT 60
+            ในช่วงความถี่ต่างๆ</span
+          >
+        </div>
+        <div class="blog col-lg-12 animate__animated animate__fadeInUp">
+          <div class="title2">
+            <h3>พื้นที่และปริมาตร</h3>
+          </div>
+          <span
+            >ให้ทำการใส่ขนาด ความกว้าง ควมยาว ความสูง
+            ลงไประบบจะทำการคำนวณพื้นที่ผิวในด้านต่างๆ และปริมาตรให้อัตโนมัติ
+            <br />
+            ในส่วนของประตูและหน้าต่าง สามารถไปเพิ่มในส่วนของ Materials and
+            calculation</span
+          >
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <img src="../assets/figure1.png" class="image" />
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <Form @submit="submit" :validation-schema="schema">
+            <div>
+              <div>
+                <span class="inputlabel">กว้าง</span>
+              </div>
+              <Field
+                class="inputField"
+                type="input"
+                name="width"
+                placeholder="width"
+              />
+              <span class="metres">เมตร</span>
+            </div>
+            <div>
+              <div>
+                <span class="inputlabel">ยาว</span>
+              </div>
+              <Field
+                class="inputField"
+                type="input"
+                name="length"
+                placeholder="length"
+              />
+              <span class="metres">เมตร</span>
+            </div>
+            <div>
+              <div>
+                <span class="inputlabel">สูง</span>
+              </div>
+              <Field
+                class="inputField"
+                type="input"
+                name="height"
+                placeholder="height"
+              />
+              <span class="metres">เมตร</span>
+            </div>
+            <button type="submit" class="button btn">Calculate</button>
+          </Form>
+        </div>
+
+        <div class="col-lg-4">
+          <div>
+            <div>
+              <span class="outputLabel">ปริมาณ</span>
+            </div>
+            <div class="box">
+              <div class="resultBox">
+                <span v-if="GStore.resultCal != null">
+                  {{ GStore.resultCal.volume }}
+                </span>
+              </div>
+              <span class="metres">ตารางเมตร</span>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <span class="outputLabel">พื้นที่ชั้นทั้งหมด</span>
+            </div>
+            <div class="box">
+              <div class="resultBox">
+                <span v-if="GStore.resultCal != null">
+                  {{ GStore.resultCal.total_floor_area }}
+                </span>
+              </div>
+              <span class="metres">ตารางเมตร</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div>
+            <div>
+              <span class="outputLabel">พื้นที่ผนังทั้งหมด</span>
+            </div>
+            <div class="box">
+              <div class="resultBox">
+                <span v-if="GStore.resultCal != null">
+                  {{ GStore.resultCal.total_wall_area }}
+                </span>
+              </div>
+              <span class="metres">ตารางเมตร</span>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <span class="outputLabel">พื้นที่เซลล์ทั้งหมด</span>
+            </div>
+            <div class="box">
+              <div class="resultBox">
+                <span v-if="GStore.resultCal != null">
+                  {{ GStore.resultCal.total_celling_area }}
+                </span>
+              </div>
+              <span class="metres">ตารางเมตร</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="container">
-    <div class="row">
-      <div class="blog col-lg-12 animate__animated animate__fadeInUp">
-        <div class="title">
-          <h3>วิธีใช้งาน</h3>
-        </div>
-        <span
-          >Hansolution acoustic calculator จะแสดงค่าความก้อง ของห้อง โดยคำนวณ
-          จาก ขนาด ความยาว ความกว้าง ความสูงของห้อง <br />
-          และวัสดุบนพื้นผิวในแต่ละด้านของห้อง แสดงผลออกมาเป็นกราฟ RT 60
-          ในช่วงความถี่ต่างๆ</span
-        >
-      </div>
-      <div class="blog col-lg-12 animate__animated animate__fadeInUp">
-        <div class="title2">
-          <h3>พื้นที่และปริมาตร</h3>
-        </div>
-        <span
-          >ให้ทำการใส่ขนาด ความกว้าง ควมยาว ความสูง
-          ลงไประบบจะทำการคำนวณพื้นที่ผิวในด้านต่างๆ และปริมาตรให้อัตโนมัติ
-          <br />
-          ในส่วนของประตูและหน้าต่าง สามารถไปเพิ่มในส่วนของ Materials and
-          calculation</span
-        >
-      </div>
-    </div>
-    <div class="col-lg-12">
-      <img src="../assets/figure.png" class="image" />
-    </div>
-
-    <div class="row">
-      <div class="col-lg-4">
-        <Form @submit="submit" :validation-schema="schema">
-          <div>
-            <div>
-              <span class="inputlabel">กว้าง</span>
-            </div>
-            <Field
-              class="inputField"
-              type="input"
-              name="width"
-              placeholder="width"
-            />
-            <span class="metres">เมตร</span>
-          </div>
-          <div>
-            <div>
-              <span class="inputlabel">ยาว</span>
-            </div>
-            <Field
-              class="inputField"
-              type="input"
-              name="length"
-              placeholder="length"
-            />
-            <span class="metres">เมตร</span>
-          </div>
-          <div>
-            <div>
-              <span class="inputlabel">สูง</span>
-            </div>
-            <Field
-              class="inputField"
-              type="input"
-              name="height"
-              placeholder="height"
-            />
-            <span class="metres">เมตร</span>
-          </div>
-          <button type="submit" class="button btn">Calculate</button>
-        </Form>
-      </div>
-
-      <div class="col-lg-4">
-        <div>
-          <div>
-            <span class="outputLabel">ปริมาณ</span>
-          </div>
-          <div class="box">
-            <div class="resultBox">
-              <span v-if="GStore.resultCal != null">
-                {{ GStore.resultCal.volume }}
-              </span>
-            </div>
-            <span class="metres">ตารางเมตร</span>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span class="outputLabel">พื้นที่ชั้นทั้งหมด</span>
-          </div>
-          <div class="box">
-            <div class="resultBox">
-              <span v-if="GStore.resultCal != null">
-                {{ GStore.resultCal.total_floor_area }}
-              </span>
-            </div>
-            <span class="metres">ตารางเมตร</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div>
-          <div>
-            <span class="outputLabel">พื้นที่ผนังทั้งหมด</span>
-          </div>
-          <div class="box">
-            <div class="resultBox">
-              <span v-if="GStore.resultCal != null">
-                {{ GStore.resultCal.total_wall_area }}
-              </span>
-            </div>
-            <span class="metres">ตารางเมตร</span>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span class="outputLabel">พื้นที่เซลล์ทั้งหมด</span>
-          </div>
-          <div class="box">
-            <div class="resultBox">
-              <span v-if="GStore.resultCal != null">
-                {{ GStore.resultCal.total_celling_area }}
-              </span>
-            </div>
-            <span class="metres">ตารางเมตร</span>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row">
       <div class="blog col-lg-12">
         <div class="title3">
@@ -292,9 +295,11 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
+
 .container {
   padding: 20px;
-  font-family: 'Kanit';
+  font-family: 'Kanit', sans-serif;
 }
 h3 {
   color: #fb8b24;
@@ -335,9 +340,15 @@ span {
   width: 200px;
   height: 30px;
   background-color: #fb8b24;
+  border-radius: 25px;
 }
 .inputField {
+  border-radius: 25px;
   background-color: #faf0e6;
+  text-align: center;
+}
+.inputField::placeholder {
+  text-align: center;
 }
 .outputLabel {
   padding-right: 70px;
@@ -376,6 +387,9 @@ span {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
+}
+.areacalculate {
+  background-color: #646464;
 }
 
 @import 'animate.css';
