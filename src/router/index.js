@@ -7,27 +7,37 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    beforeEnter: () => {
-      if (GStore.frontWall == null) {
+    beforeEnter: (to, from, next) => {
+      if (GStore.frontWall == null && GStore.productfrontWall == null) {
         MaterialService.getFrontWall()
+        MaterialService.getProductFrontWall()
       }
-      if (GStore.leftWall == null) {
+      if (GStore.leftWall == null && GStore.productleftWall == null) {
         MaterialService.getLeftWall()
+        MaterialService.getProductLeftWall()
       }
-      if (GStore.rightWall == null) {
+      if (GStore.rightWall == null && GStore.productrightWall == null) {
         MaterialService.getRightWall()
+        MaterialService.getProductRightWall()
       }
-      if (GStore.behindWall == null) {
+      if (GStore.behindWall == null && GStore.productbehindWall == null) {
         MaterialService.getBehindWall()
+        MaterialService.getProductBehindWall()
       }
-      if (GStore.floor == null) {
+      if (GStore.floor == null && GStore.productfloor == null) {
         MaterialService.getFloor()
+        MaterialService.getProductFloor()
       }
-      if (GStore.ceiling == null) {
+      if (GStore.ceiling == null && GStore.productceiling == null) {
         MaterialService.getCeiling()
+        MaterialService.getProductCeiling()
       }
 
-      return MaterialService.getMaterial()
+      MaterialService.getMaterial().then(() => {
+        MaterialService.getProduct().then(() => {
+          next()
+        })
+      })
     }
   },
   {

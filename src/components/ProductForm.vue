@@ -1,25 +1,38 @@
 <template>
   <div class="row">
     <form @submit.prevent="onSubmit">
-      <div class="productbox">
+      <div class="greybox">
         <div class="row">
-          <label v-if="label">{{ label }}</label>
-          <div class="textproductelement">
-            <div>
-              <span>Material: </span>
-              <span>All Area: m²| </span>
-              <span> Area of product: </span>
+          <div class="inputcol col-lg-3">
+            <label v-if="label"> Product {{ label }}</label>
+          </div>
+          <div class="dropdownlist col-lg-3">
+            <BaseSelectVue
+              :options="GStore.product"
+              v-model="selected"
+              required
+            />
+            <div v-if="this.name == 'ผนังด้านหน้า'">
+              <BaseSelectVue2 :options="GStore.frontWall" v-model="material" />
             </div>
-            <div class="containForm">
-              <span>Product: </span>
-              <div>
-                <BaseSelectVue
-                  :options="GStore.material"
-                  v-model="selected"
-                  required
-                />
-              </div>
+            <div v-if="this.name == 'ผนังด้านซ้าย'">
+              <BaseSelectVue2 :options="GStore.leftWall" v-model="material" />
             </div>
+            <div v-if="this.name == 'ผนังด้านขวา'">
+              <BaseSelectVue2 :options="GStore.rightWall" v-model="material" />
+            </div>
+            <div v-if="this.name == 'ผนังด้านหลัง'">
+              <BaseSelectVue2 :options="GStore.behindWall" v-model="material" />
+            </div>
+            <div v-if="this.name == 'พื้น'">
+              <BaseSelectVue2 :options="GStore.floor" v-model="material" />
+            </div>
+            <div v-if="this.name == 'เพดาน'">
+              <BaseSelectVue2 :options="GStore.ceiling" v-model="material" />
+            </div>
+          </div>
+          <div class="addBox col-lg-3">
+            <button class="btn btn-warning">+Add Product</button>
           </div>
         </div>
       </div>
@@ -29,10 +42,53 @@
 
 <script>
 import BaseSelectVue from '@/components/BaseSelect.vue'
+import BaseSelectVue2 from '@/components/BaseSelect2.vue'
+import CalculateService from '@/services/CalculateService'
+import MaterialService from '@/services/MaterialService'
 export default {
   inject: ['GStore'],
   components: {
-    BaseSelectVue
+    BaseSelectVue,
+    BaseSelectVue2
+  },
+  data() {
+    return {
+      name: this.label,
+      selected: '',
+      material: ''
+    }
+  },
+  methods: {
+    onSubmit() {
+      let inputProduct = {
+        name: this.name,
+        selected: this.selected,
+        material: this.material
+      }
+      console.log(inputProduct)
+      CalculateService.calculateProduct(inputProduct)
+      alert('Adding' + ' ' + this.name + ' ' + 'successfully')
+      this.$emit('comment-submited', inputProduct)
+      ;(this.name = this.label), (this.selected = ''), (this.material = '')
+      if (this.name == 'ผนังด้านหน้า') {
+        MaterialService.getProductFrontWall()
+      }
+      if (this.name == 'ผนังด้านซ้าย') {
+        MaterialService.getProductLeftWall()
+      }
+      if (this.name == 'ผนังด้านขวา') {
+        MaterialService.getProductRightWall()
+      }
+      if (this.name == 'ผนังด้านหลัง') {
+        MaterialService.getProductBehindWall()
+      }
+      if (this.name == 'พื้น') {
+        MaterialService.getProductFloor()
+      }
+      if (this.name == 'เพดาน') {
+        MaterialService.getProductCeiling()
+      }
+    }
   },
   props: {
     label: {
@@ -44,19 +100,35 @@ export default {
 </script>
 
 <style>
-.productbox {
+.greybox {
   margin: auto;
   width: 75%;
   border: solid;
   padding: 10px;
-  background-color: #faf0e6;
+  background-color: #405b6f;
 }
-.textproductelement {
+.inputcol {
   margin-top: 8px;
-  letter-spacing: 0.5px;
-  display: inline;
+  display: inline-block;
+  color: white;
 }
-.containForm {
-  display: inline-flex;
+.inputbox {
+  background: #faf0e6;
+  margin-top: 5px;
+  margin-right: 20px;
+  width: 50px;
+}
+.dropdownlist {
+  margin-top: 5px;
+  width: 100px;
+}
+.addBox {
+  font-weight: bold;
+  margin-left: 105px;
+  text-align: right;
+}
+.msquare {
+  margin-bottom: 8px;
+  color: white;
 }
 </style>

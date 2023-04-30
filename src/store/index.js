@@ -10,5 +10,13 @@ export default reactive({
   behindWall: null,
   ceiling: null,
   floor: null,
-  graphBefore: null
+  productfrontWall: null,
+  productleftWall: null,
+  productrightWall: null,
+  productbehindWall: null,
+  productceiling: null,
+  productfloor: null,
+  graphBefore: null,
+  graphAfter: null,
+  product: null
 })

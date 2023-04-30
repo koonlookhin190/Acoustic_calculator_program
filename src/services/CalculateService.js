@@ -24,12 +24,33 @@ export default {
         return console.log(error)
       })
   },
+  calculateProduct(inputMaterial) {
+    return apiClient
+      .post('/calculateProduct', inputMaterial)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
   getCalculateR(volume) {
     return apiClient
       .post('/calculateAll', volume)
       .then((response) => {
         console.log(response.data)
         GStore.graphBefore = response.data
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
+  getCalculateUpdate(volume) {
+    return apiClient
+      .post('/calculatePro', volume)
+      .then((response) => {
+        console.log(response.data)
+        GStore.graphAfter = response.data
       })
       .catch((error) => {
         return console.log(error)

@@ -101,5 +101,105 @@ export default {
       .catch((error) => {
         return console.log(error)
       })
+  },
+  deleteProduct(deleteinfo) {
+    return apiClient
+      .post('/deleteProduct', deleteinfo)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
+  getProduct() {
+    return apiClient
+      .get('/getProduct')
+      .then((response) => {
+        console.log(response.data)
+        GStore.product = response.data
+        console.log(GStore.material)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
+  getProductFrontWall() {
+    return apiClient
+      .get('/getProductFrontWall')
+      .then((response) => {
+        console.log(response.data)
+        // var keep = JSON.stringify(response.data)
+        GStore.productfrontWall = response.data
+        console.log(GStore.productfrontWall)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
+  getProductLeftWall() {
+    return apiClient
+      .get('/getProductLeftWall')
+      .then((response) => {
+        console.log(response.data)
+        // var keep = JSON.stringify(response.data)
+        GStore.productleftWall = response.data
+        console.log(GStore.productleftWall)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
+  getProductRightWall() {
+    return apiClient
+      .get('/getProductRightWall')
+      .then((response) => {
+        console.log(response.data)
+        // var keep = JSON.stringify(response.data)
+        GStore.productrightWall = response.data
+        console.log(GStore.productrightWall)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
+  getProductBehindWall() {
+    return apiClient
+      .get('/getProductBehindWall')
+      .then((response) => {
+        console.log(response.data)
+        // var keep = JSON.stringify(response.data)
+        GStore.productbehindWall = response.data
+        console.log(GStore.productbehindWall)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
+  getProductFloor() {
+    return apiClient
+      .get('/getProductFloor')
+      .then((response) => {
+        console.log(response.data)
+        // var keep = JSON.stringify(response.data)
+        GStore.productfloor = response.data
+        console.log(GStore.productfloor)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
+  },
+  getProductCeiling() {
+    return apiClient
+      .get('/getProductCeiling')
+      .then((response) => {
+        console.log(response.data)
+        // var keep = JSON.stringify(response.data)
+        GStore.productceiling = response.data
+        console.log(GStore.productceiling)
+      })
+      .catch((error) => {
+        return console.log(error)
+      })
   }
 }

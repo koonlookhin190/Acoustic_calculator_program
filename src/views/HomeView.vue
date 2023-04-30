@@ -189,6 +189,45 @@
         <BarChart />
       </div>
       <ProductForm label="ผนังด้านหน้า" />
+      <FormAfterAddPro
+        v-for="info in GStore.productfrontWall"
+        :key="info.id"
+        :info="info"
+      />
+      <ProductForm label="ผนังด้านซ้าย" />
+      <FormAfterAddPro
+        v-for="info in GStore.productleftWall"
+        :key="info.id"
+        :info="info"
+      />
+      <ProductForm label="ผนังด้านขวา" />
+      <FormAfterAddPro
+        v-for="info in GStore.productrightWall"
+        :key="info.id"
+        :info="info"
+      />
+      <ProductForm label="ผนังด้านหลัง" />
+      <FormAfterAddPro
+        v-for="info in GStore.productbehindWall"
+        :key="info.id"
+        :info="info"
+      />
+      <ProductForm label="พื้น" />
+      <FormAfterAddPro
+        v-for="info in GStore.productfloor"
+        :key="info.id"
+        :info="info"
+      />
+      <ProductForm label="เพดาน" />
+      <FormAfterAddPro
+        v-for="info in GStore.productceiling"
+        :key="info.id"
+        :info="info"
+      />
+    </div>
+    <button class="beforert60cal" @click="calculateUpdate">Calculate</button>
+    <div v-if="GStore.graphAfter != null">
+      <BarChart2 />
     </div>
   </div>
 </template>
@@ -198,10 +237,12 @@ import CalculateService from '@/services/CalculateService.js'
 import { Form, Field } from 'vee-validate'
 import FormBefore from '@/components/FormBefore.vue'
 import FormAfterAdd from '@/components/FormAfterAdd.vue'
+import FormAfterAddPro from '@/components/FromAfterAddPro.vue'
 import * as yup from 'yup'
 import ProductForm from '@/components/ProductForm.vue'
 import GStore from '@/store'
 import BarChart from '@/components/LineChart.vue'
+import BarChart2 from '@/components/LineChart2.vue'
 export default {
   inject: ['GStore'],
   components: {
@@ -209,8 +250,10 @@ export default {
     Field,
     FormBefore,
     FormAfterAdd,
+    FormAfterAddPro,
     ProductForm,
-    BarChart
+    BarChart,
+    BarChart2
   },
   data() {
     const schema = yup.object().shape({
@@ -235,6 +278,14 @@ export default {
       }
       console.log(calR)
       CalculateService.getCalculateR(calR)
+      this.chartKey += 1
+    },
+    calculateUpdate() {
+      let calUp = {
+        volume: GStore.resultCal.volume
+      }
+      console.log(calUp)
+      CalculateService.getCalculateUpdate(calUp)
       this.chartKey += 1
     }
   }
