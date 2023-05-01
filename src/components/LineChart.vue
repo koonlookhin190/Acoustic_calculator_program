@@ -42,7 +42,7 @@ export default {
     return {
       chartKey: 0,
       chartData: {
-        labels: ['250hz', '500hz', 'K1', 'K2', 'K4'],
+        labels: ['250hz', '500hz', '1K', '2K', '4K'],
         backgroundColor: '#fb8b24',
         datasets: [
           {
@@ -63,7 +63,21 @@ export default {
       },
       chartOptions: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Hertz(Hz)'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Second(s)'
+            }
+          }
+        }
       }
     }
   },
