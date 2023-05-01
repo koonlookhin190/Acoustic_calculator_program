@@ -1,43 +1,44 @@
 <template>
-  <div class="row">
-    <form @submit.prevent="onSubmit">
-      <div class="greybox">
-        <div class="row">
-          <div class="inputcol col-lg-3">
-            <label v-if="label"> Product {{ label }}</label>
+  <form @submit.prevent="onSubmit">
+    <div class="greybox">
+      <div class="row">
+        <div class="inputcol col-lg-3">
+          <label v-if="label"> Product {{ label }}</label>
+        </div>
+        <div class="dropdownlist col-lg-3">
+          <BaseSelectVue
+            :options="GStore.product"
+            v-model="selected"
+            required
+          />
+        </div>
+        <div class="materialcolumn col-lg-3">
+          <span class="productformtext">Material</span>
+          <div v-if="this.name == 'ผนังด้านหน้า'">
+            <BaseSelectVue2 :options="GStore.frontWall" v-model="material" />
           </div>
-          <div class="dropdownlist col-lg-3">
-            <BaseSelectVue
-              :options="GStore.product"
-              v-model="selected"
-              required
-            />
-            <div v-if="this.name == 'ผนังด้านหน้า'">
-              <BaseSelectVue2 :options="GStore.frontWall" v-model="material" />
-            </div>
-            <div v-if="this.name == 'ผนังด้านซ้าย'">
-              <BaseSelectVue2 :options="GStore.leftWall" v-model="material" />
-            </div>
-            <div v-if="this.name == 'ผนังด้านขวา'">
-              <BaseSelectVue2 :options="GStore.rightWall" v-model="material" />
-            </div>
-            <div v-if="this.name == 'ผนังด้านหลัง'">
-              <BaseSelectVue2 :options="GStore.behindWall" v-model="material" />
-            </div>
-            <div v-if="this.name == 'พื้น'">
-              <BaseSelectVue2 :options="GStore.floor" v-model="material" />
-            </div>
-            <div v-if="this.name == 'เพดาน'">
-              <BaseSelectVue2 :options="GStore.ceiling" v-model="material" />
-            </div>
+          <div v-if="this.name == 'ผนังด้านซ้าย'">
+            <BaseSelectVue2 :options="GStore.leftWall" v-model="material" />
           </div>
-          <div class="addBox col-lg-3">
-            <button class="btn btn-warning">+Add Product</button>
+          <div v-if="this.name == 'ผนังด้านขวา'">
+            <BaseSelectVue2 :options="GStore.rightWall" v-model="material" />
+          </div>
+          <div v-if="this.name == 'ผนังด้านหลัง'">
+            <BaseSelectVue2 :options="GStore.behindWall" v-model="material" />
+          </div>
+          <div v-if="this.name == 'พื้น'">
+            <BaseSelectVue2 :options="GStore.floor" v-model="material" />
+          </div>
+          <div v-if="this.name == 'เพดาน'">
+            <BaseSelectVue2 :options="GStore.ceiling" v-model="material" />
           </div>
         </div>
+        <div class="addBox col-lg-3">
+          <button class="btn btn-warning">+Add Product</button>
+        </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -131,4 +132,13 @@ export default {
   margin-bottom: 8px;
   color: white;
 }
+.productformtext {
+  margin-top: 6px;
+  margin-right: 5px;
+  color: white;
+}
+.materialcolumn {
+  display: inline-flex;
+}
+@import '~bootstrap/dist/css/bootstrap.css';
 </style>

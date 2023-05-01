@@ -1,7 +1,7 @@
 <template>
   <label v-if="label">{{ label }}</label>
   <select
-    class="field"
+    class="field productdrop"
     :value="modelValue"
     v-bind="{
       ...$attrs,
@@ -39,3 +39,9 @@ export default {
   }
 }
 </script>
+<style>
+.productdrop {
+  margin-top: 4.77px;
+  width: 200px;
+}
+</style>

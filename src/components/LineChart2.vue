@@ -65,8 +65,8 @@ export default {
               GStore.graphAfter.at250,
               GStore.graphAfter.at500,
               GStore.graphAfter.atK1,
-              GStore.graphBefore.atK2,
-              GStore.graphBefore.atK4
+              GStore.graphAfter.atK2,
+              GStore.graphAfter.atK4
             ],
             backgroundColor: '#b2002f',
             borderColor: '#b2002f',
@@ -129,5 +129,6 @@ export default {
 .chart {
   padding: 20px;
   border: solid;
+  background-color: white;
 }
 </style>

@@ -109,5 +109,6 @@ export default {
 .chart {
   padding: 20px;
   border: solid;
+  background-color: white;
 }
 </style>
