@@ -39,25 +39,36 @@ export default {
       }
       console.log(deleteInfo)
       MaterialService.deleteProduct(deleteInfo)
-      alert('Removing' + ' ' + this.info.name + ' ' + 'successfully')
-      if (this.name == 'ผนังด้านหน้า') {
-        MaterialService.getProductFrontWall()
-      }
-      if (this.name == 'ผนังด้านซ้าย') {
-        MaterialService.getProductLeftWall()
-      }
-      if (this.name == 'ผนังด้านขวา') {
-        MaterialService.getProductRightWall()
-      }
-      if (this.name == 'ผนังด้านหลัง') {
-        MaterialService.getProductBehindWall()
-      }
-      if (this.name == 'พื้น') {
-        MaterialService.getProductFloor()
-      }
-      if (this.name == 'เพดาน') {
-        MaterialService.getProductCeiling()
-      }
+      setTimeout(
+        () =>
+          this.$swal.fire({
+            icon: 'warning',
+            title: 'ลบข้อมูล',
+            showConfirmButton: false,
+            timer: 800
+          }),
+        300
+      )
+      setTimeout(() => {
+        if (this.name == 'ผนังด้านหน้า') {
+          MaterialService.getProductFrontWall()
+        }
+        if (this.name == 'ผนังด้านซ้าย') {
+          MaterialService.getProductLeftWall()
+        }
+        if (this.name == 'ผนังด้านขวา') {
+          MaterialService.getProductRightWall()
+        }
+        if (this.name == 'ผนังด้านหลัง') {
+          MaterialService.getProductBehindWall()
+        }
+        if (this.name == 'พื้น') {
+          MaterialService.getProductFloor()
+        }
+        if (this.name == 'เพดาน') {
+          MaterialService.getProductCeiling()
+        }
+      }, 300)
     }
   },
   props: {

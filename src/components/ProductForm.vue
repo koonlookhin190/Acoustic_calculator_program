@@ -68,27 +68,28 @@ export default {
       }
       console.log(inputProduct)
       CalculateService.calculateProduct(inputProduct)
-      alert('Adding' + ' ' + this.name + ' ' + 'successfully')
       this.$emit('comment-submited', inputProduct)
       ;(this.name = this.label), (this.selected = ''), (this.material = '')
-      if (this.name == 'ผนังด้านหน้า') {
-        MaterialService.getProductFrontWall()
-      }
-      if (this.name == 'ผนังด้านซ้าย') {
-        MaterialService.getProductLeftWall()
-      }
-      if (this.name == 'ผนังด้านขวา') {
-        MaterialService.getProductRightWall()
-      }
-      if (this.name == 'ผนังด้านหลัง') {
-        MaterialService.getProductBehindWall()
-      }
-      if (this.name == 'พื้น') {
-        MaterialService.getProductFloor()
-      }
-      if (this.name == 'เพดาน') {
-        MaterialService.getProductCeiling()
-      }
+      setTimeout(() => {
+        if (this.name == 'ผนังด้านหน้า') {
+          MaterialService.getProductFrontWall()
+        }
+        if (this.name == 'ผนังด้านซ้าย') {
+          MaterialService.getProductLeftWall()
+        }
+        if (this.name == 'ผนังด้านขวา') {
+          MaterialService.getProductRightWall()
+        }
+        if (this.name == 'ผนังด้านหลัง') {
+          MaterialService.getProductBehindWall()
+        }
+        if (this.name == 'พื้น') {
+          MaterialService.getProductFloor()
+        }
+        if (this.name == 'เพดาน') {
+          MaterialService.getProductCeiling()
+        }
+      }, 40)
     }
   },
   props: {

@@ -5,7 +5,7 @@
         <div class="row">
           <div class="inputcol col-lg-3">
             <label v-if="label">{{ label }}</label>
-            <span> มีพื้นที่ {{ keep }}</span>
+            <span v-if="keep != 0"> มีพื้นที่ {{ keep }}</span>
           </div>
           <div class="col-lg-3">
             <input class="inputbox" type="text" v-model="input" required />
@@ -52,7 +52,7 @@ export default {
   methods: {
     onSubmit() {
       if (this.GStore.resultCal != null) {
-        if (this.input <= this.keep) {
+        if (this.input <= this.keep && this.input != 0) {
           this.keep = this.keep - this.input
           let inputMaterial = {
             name: this.name,
@@ -63,31 +63,38 @@ export default {
           this.$emit('comment-submited', inputMaterial)
           ;(this.name = this.label), (this.selected = ''), (this.input = '')
           CalculateService.calculateMaterial(inputMaterial)
-          alert('Adding' + ' ' + this.name + ' ' + 'successfully')
-        } else if (this.input > this.keep) {
-          alert('พื้นที่ไม่พอ')
-        } else {
-          alert('พื้นที่ไม่พอ')
-          this.keep = 0
+        } else if (this.input > this.keep || this.input == 0) {
+          setTimeout(
+            () =>
+              this.$swal.fire({
+                icon: 'error',
+                title: 'พื้นที่ไม่เพียงพอ',
+                showConfirmButton: false,
+                timer: 800
+              }),
+            300
+          )
         }
-        if (this.name == 'ผนังด้านหน้า') {
-          MaterialService.getFrontWall()
-        }
-        if (this.name == 'ผนังด้านซ้าย') {
-          MaterialService.getLeftWall()
-        }
-        if (this.name == 'ผนังด้านขวา') {
-          MaterialService.getRightWall()
-        }
-        if (this.name == 'ผนังด้านหลัง') {
-          MaterialService.getBehindWall()
-        }
-        if (this.name == 'พื้น') {
-          MaterialService.getFloor()
-        }
-        if (this.name == 'เพดาน') {
-          MaterialService.getCeiling()
-        }
+        setTimeout(() => {
+          if (this.name == 'ผนังด้านหน้า') {
+            MaterialService.getFrontWall()
+          }
+          if (this.name == 'ผนังด้านซ้าย') {
+            MaterialService.getLeftWall()
+          }
+          if (this.name == 'ผนังด้านขวา') {
+            MaterialService.getRightWall()
+          }
+          if (this.name == 'ผนังด้านหลัง') {
+            MaterialService.getBehindWall()
+          }
+          if (this.name == 'พื้น') {
+            MaterialService.getFloor()
+          }
+          if (this.name == 'เพดาน') {
+            MaterialService.getCeiling()
+          }
+        }, 100)
       }
     },
     updateKeepValue() {
