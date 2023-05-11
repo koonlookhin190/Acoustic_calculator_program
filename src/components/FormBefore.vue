@@ -5,6 +5,7 @@
         <div class="row">
           <div class="inputcol col-lg-3">
             <label v-if="label">{{ label }}</label>
+            <span> มีพื้นที่ {{ keep }}</span>
           </div>
           <div class="col-lg-3">
             <input class="inputbox" type="text" v-model="input" required />
@@ -39,38 +40,74 @@ export default {
     return {
       name: this.label,
       selected: '',
-      input: ''
+      input: '',
+      keep: 0
+    }
+  },
+  watch: {
+    'GStore.resultCal': function () {
+      this.updateKeepValue()
     }
   },
   methods: {
     onSubmit() {
-      let inputMaterial = {
-        name: this.name,
-        selected: this.selected,
-        input: this.input
+      if (this.GStore.resultCal != null) {
+        if (this.input <= this.keep) {
+          this.keep = this.keep - this.input
+          let inputMaterial = {
+            name: this.name,
+            selected: this.selected,
+            input: this.input
+          }
+
+          this.$emit('comment-submited', inputMaterial)
+          ;(this.name = this.label), (this.selected = ''), (this.input = '')
+          CalculateService.calculateMaterial(inputMaterial)
+          alert('Adding' + ' ' + this.name + ' ' + 'successfully')
+        } else if (this.input > this.keep) {
+          alert('พื้นที่ไม่พอ')
+        } else {
+          alert('พื้นที่ไม่พอ')
+          this.keep = 0
+        }
+        if (this.name == 'ผนังด้านหน้า') {
+          MaterialService.getFrontWall()
+        }
+        if (this.name == 'ผนังด้านซ้าย') {
+          MaterialService.getLeftWall()
+        }
+        if (this.name == 'ผนังด้านขวา') {
+          MaterialService.getRightWall()
+        }
+        if (this.name == 'ผนังด้านหลัง') {
+          MaterialService.getBehindWall()
+        }
+        if (this.name == 'พื้น') {
+          MaterialService.getFloor()
+        }
+        if (this.name == 'เพดาน') {
+          MaterialService.getCeiling()
+        }
       }
-      console.log(inputMaterial)
-      CalculateService.calculateMaterial(inputMaterial)
-      alert('Adding' + ' ' + this.name + ' ' + 'successfully')
-      this.$emit('comment-submited', inputMaterial)
-      ;(this.name = this.label), (this.selected = ''), (this.input = '')
-      if (this.name == 'ผนังด้านหน้า') {
-        MaterialService.getFrontWall()
+    },
+    updateKeepValue() {
+      if (this.name == 'ผนังด้านหน้า' && this.GStore.resultCal != null) {
+        this.keep = this.GStore.resultCal.front_wall
       }
-      if (this.name == 'ผนังด้านซ้าย') {
-        MaterialService.getLeftWall()
+      if (this.name == 'ผนังด้านซ้าย' && this.GStore.resultCal != null) {
+        this.keep = this.GStore.resultCal.left_wall
       }
-      if (this.name == 'ผนังด้านขวา') {
-        MaterialService.getRightWall()
+      if (this.name == 'ผนังด้านขวา' && this.GStore.resultCal != null) {
+        this.keep = this.GStore.resultCal.right_wall
       }
-      if (this.name == 'ผนังด้านหลัง') {
-        MaterialService.getBehindWall()
+      if (this.name == 'ผนังด้านหลัง' && this.GStore.resultCal != null) {
+        this.keep = this.GStore.resultCal.behind_wall
       }
-      if (this.name == 'พื้น') {
-        MaterialService.getFloor()
+      if (this.name == 'พื้น' && this.GStore.resultCal != null) {
+        this.keep = this.GStore.resultCal.total_celling_area
       }
-      if (this.name == 'เพดาน') {
-        MaterialService.getCeiling()
+      if (this.name == 'เพดาน' && this.GStore.resultCal != null) {
+        this.keep = this.GStore.resultCal.total_floor_area
       }
     }
   },
