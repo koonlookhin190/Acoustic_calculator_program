@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <div class="greybox">
+    <div class="greyproductbox">
       <div class="row">
         <div class="inputcol col-lg-3">
           <label v-if="label"> Product {{ label }}</label>
@@ -102,7 +102,7 @@ export default {
 </script>
 
 <style>
-.greybox {
+.greyproductbox {
   margin: auto;
   width: 75%;
   border: solid;

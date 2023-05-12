@@ -1,31 +1,17 @@
 <template>
   <section class="container-fluid welcomelogo">
     <div class="banner">
-      <div class="row">
-        <div class="containerApp col-lg-6">
-          <!-- <img src="./assets/logo7.png" class="imagelogo" /> -->
-          <div class="logotextbox animate__animated animate__fadeInUp">
-            <span class="brandname">HANSSOLUTION</span>
-            <div>
-              <span class="brandname2">ACOUSTIC CALCULATOR</span>
-            </div>
-          </div>
-          <div class="animate__animated animate__fadeInUp">
-            <button
-              class="button-10"
-              role="button"
-              @click="scrollToFirstSection"
-            >
-              Get Started
-            </button>
-          </div>
+      <img src="./assets/Hans_Logo.png" class="imagelogo" />
+      <div class="logotextbox animate__animated animate__fadeInUp">
+        <span class="brandname">HANS SOLUTION</span>
+        <div>
+          <span class="brandname2">ACOUSTIC CALCULATOR</span>
         </div>
-        <div class="col-lg-6">
-          <img
-            src="./assets/room.jpg"
-            class="imageroom animate__animated animate__fadeInUp"
-          />
-        </div>
+      </div>
+      <div class="animate__animated animate__fadeInUp">
+        <button class="button-10" role="button" @click="scrollToFirstSection">
+          Get Started
+        </button>
       </div>
     </div>
   </section>
@@ -43,18 +29,13 @@ export default {
 }
 </script>
 <style>
-@font-face {
-  font-family: 'Neon Led Light';
-  src: url('@/assets/NEONLEDLight.otf') format('truetype');
-}
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 .containerApp {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 .imagelogo {
-  margin-top: 10%;
-  width: 300px;
+  margin-top: 7%;
+  width: 275px;
   height: 300px;
 }
 #app {
@@ -62,7 +43,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 nav {
@@ -78,26 +58,17 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 .welcomelogo {
-  background-image: linear-gradient(to bottom right, #513d90, #ceccf1);
+  background-color: black;
   height: 100vh;
-}
-.imageroom {
-  height: 100vh;
-  width: 86.7vh;
-  box-shadow: 0px 0px 7px #000000;
 }
 .brandname {
-  font-family: 'Neon Led Light', sans-serif;
   color: white;
   font-size: 90px;
-  text-shadow: 4px 4px 4px #8e8afb, 5px 5px 5px black;
+  font-weight: bold;
 }
 .brandname2 {
   color: white;
   font-size: 30px;
-}
-.logotextbox {
-  padding-top: 35%;
 }
 .button-10 {
   margin-top: 10%;
@@ -111,8 +82,7 @@ nav a.router-link-exact-active {
   border: 1px solid #e8e8e8;
   color: #1e1b1b;
   font-weight: bold;
-  letter-spacing: 1px;
-  box-shadow: 0px 4px 16px rgba(154, 154, 154, 0.31);
+  letter-spacing: 1.5px;
 }
 @import '~bootstrap/dist/css/bootstrap.css';
 @import 'animate.css';

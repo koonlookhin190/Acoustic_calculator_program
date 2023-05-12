@@ -24,7 +24,7 @@
         <h3>พื้นที่และปริมาตร</h3>
       </div>
       <div class="calculatetext">
-        <div class="blog col-lg-12 animate__animated animate__fadeInUp">
+        <div class="blog pttext col-lg-12 animate__animated animate__fadeInUp">
           <span
             >ให้ทำการใส่ขนาด ความกว้าง ควมยาว ความสูง
             ลงไประบบจะทำการคำนวณพื้นที่ผิวในด้านต่างๆ และปริมาตรให้อัตโนมัติ
@@ -32,10 +32,13 @@
             ในส่วนของประตูและหน้าต่าง สามารถไปเพิ่มในส่วนของ Materials and
             calculation</span
           >
+          <div class="ptdiv">
+            <div class="pt"></div>
+          </div>
         </div>
 
         <div class="col-lg-12">
-          <img src="../assets/figure2.png" class="image" />
+          <img src="../assets/figure1.png" class="image" />
         </div>
         <div class="row">
           <div class="col-lg-4">
@@ -83,7 +86,7 @@
           <div class="col-lg-4">
             <div>
               <div>
-                <span class="outputLabel">ปริมาณ</span>
+                <span class="outputLabel">ปริมาตร</span>
               </div>
               <div class="box">
                 <div class="resultBox">
@@ -197,12 +200,14 @@
           <div class="title3">
             <h3>วัสดุและการคำนวณ</h3>
           </div>
-          <span
-            >โปรดเลือกวัสดุในพื้นที่ผิวผนังแต่ละด้านของห้อง
-            ในกรณีที่มีหลายวัสดึในหนึ่งด้านให้กดปุ่มเพิ่มเติมเพื่อเลือกวัสดุอื่นในพื้นที่ผิวนั้นๆ<br />
-            และใส่ขนาดพื้นที่ของวัสดุนั้นๆ
-            ให้ใช้วิธีเดียวกันในนี้ในด้านที่มีประตูและหน้าต่าง</span
-          >
+          <div class="calgr">
+            <span
+              >โปรดเลือกวัสดุในพื้นที่ผิวผนังแต่ละด้านของห้อง
+              ในกรณีที่มีหลายวัสดึในหนึ่งด้านให้กดปุ่มเพิ่มเติมเพื่อเลือกวัสดุอื่นในพื้นที่ผิวนั้นๆ<br />
+              และใส่ขนาดพื้นที่ของวัสดุนั้นๆ
+              ให้ใช้วิธีเดียวกันในนี้ในด้านที่มีประตูและหน้าต่าง</span
+            >
+          </div>
         </div>
         <FormBefore label="ผนังด้านหน้า" />
         <FormAfterAdd
@@ -377,9 +382,9 @@ export default {
   font-family: 'Kanit', sans-serif;
 }
 h3 {
-  color: #5d4abf;
+  color: #f4a301;
   font-weight: bold;
-  text-shadow: 3px 2px white;
+  text-shadow: 3px 2px black;
 }
 span {
   font-weight: bold;
@@ -417,7 +422,7 @@ span {
   border: solid;
   width: 200px;
   height: 30px;
-  background-color: #8481d9;
+  background-color: #f4a301;
   border-radius: 25px;
 }
 .inputField {
@@ -438,7 +443,7 @@ span {
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-  background: #888bd2;
+  background: #f4a301;
   border: 3px solid #121212;
   border-radius: 3px;
   color: #fff;
@@ -469,19 +474,19 @@ span {
   margin-bottom: 10px;
 }
 .areacalculate {
-  background-color: #e3e2f7;
+  background-color: #3a3f46;
 }
 .howtouse {
   padding-top: 50px;
   padding-bottom: 25px;
-  background-color: #ceccf1;
+  background-color: #2a2e34;
 }
 .howtousetext {
   padding-top: 20px;
   padding-bottom: 20px;
   border: solid;
   border-radius: 25px;
-  background-color: #e3e2f7;
+  background-color: #ffffff;
   box-shadow: 5px 5px 0px #000000;
 }
 .calculatetext {
@@ -490,9 +495,27 @@ span {
   padding-bottom: 20px;
   border: solid;
   border-radius: 25px;
-  background-color: #e3e2f7;
+  background-color: #ffffff;
   box-shadow: 5px 5px 0px #000000;
 }
-
+.pt {
+  padding-top: 5%;
+  border-bottom: solid 2px;
+}
+.ptdiv {
+  padding-left: 120px;
+  width: 90%;
+}
+.pttext {
+  margin-top: 30px;
+}
+.calgr {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: solid;
+  border-radius: 25px;
+  background-color: #ffffff;
+  box-shadow: 5px 5px 0px #000000;
+}
 @import 'animate.css';
 </style>

@@ -83,7 +83,7 @@ export default {
 <style>
 .boxtest {
   margin: auto;
-  width: 75%;
+  width: 100%;
   border: solid;
   padding: 10px;
   background-color: #faf0e6;

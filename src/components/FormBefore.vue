@@ -3,11 +3,18 @@
     <form @submit.prevent="onSubmit">
       <div class="greybox">
         <div class="row">
-          <div class="inputcol col-lg-3">
-            <label v-if="label">{{ label }}</label>
-            <span v-if="keep != 0"> มีพื้นที่ {{ keep }}</span>
+          <div class="inputcol col-lg-2">
+            <div class="labelmat">
+              <label v-if="label">{{ label }}</label>
+            </div>
           </div>
-          <div class="col-lg-3">
+          <div class="arealabel col-lg-2">
+            <span>Area</span>
+          </div>
+          <div class="value col-lg-2">
+            <span> {{ keep }} </span>
+          </div>
+          <div class="col-lg-2">
             <input class="inputbox" type="text" v-model="input" required />
             <span class="msquare">m²</span>
           </div>
@@ -18,7 +25,7 @@
               required
             />
           </div>
-          <div class="addBox col-lg-3">
+          <div class="addBox col-lg-2">
             <button class="btn btn-warning">+Add materials</button>
           </div>
         </div>
@@ -130,10 +137,11 @@ export default {
 <style>
 .greybox {
   margin: auto;
-  width: 75%;
+  width: 100%;
   border: solid;
   padding: 10px;
-  background-color: #405b6f;
+  background: #2a2e34;
+  box-shadow: 5px 5px 5px 5px #000000;
 }
 .inputcol {
   margin-top: 8px;
@@ -157,6 +165,21 @@ export default {
 }
 .msquare {
   margin-bottom: 8px;
+  color: white;
+}
+.value {
+  margin-right: 100px;
+  margin-top: 6px;
+  border: solid black;
+  width: 50px;
+  height: 30px;
+  background-color: #f4a301;
+}
+.labelmat {
+  border-right: solid;
+}
+.arealabel {
+  margin-top: 7.5px;
   color: white;
 }
 </style>
