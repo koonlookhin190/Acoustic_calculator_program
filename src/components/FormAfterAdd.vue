@@ -82,10 +82,10 @@ export default {
 <style>
 .boxtest {
   margin: auto;
-  width: 75%;
+  width: 90%;
   border: solid;
   padding: 10px;
-  background-color: #faf0e6;
+  background-color: white;
 }
 .textelement {
   margin-top: 8px;

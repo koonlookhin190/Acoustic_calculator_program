@@ -107,7 +107,7 @@ export default {
   width: 75%;
   border: solid;
   padding: 10px;
-  background-color: #405b6f;
+  background-color: #2a2e34;
 }
 .inputcol {
   margin-top: 8px;

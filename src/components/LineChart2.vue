@@ -54,8 +54,8 @@ export default {
               GStore.graphBefore.atK2,
               GStore.graphBefore.atK4
             ],
-            backgroundColor: '#fb8b24',
-            borderColor: '#fb8b24',
+            backgroundColor: '#aa4c0a',
+            borderColor: '#aa4c0a',
             fill: false,
             tension: 0.1
           },
@@ -68,8 +68,8 @@ export default {
               GStore.graphAfter.atK2,
               GStore.graphAfter.atK4
             ],
-            backgroundColor: '#b2002f',
-            borderColor: '#b2002f',
+            backgroundColor: '#ffe169',
+            borderColor: '#ffe169',
             fill: false,
             tension: 0.1
           }

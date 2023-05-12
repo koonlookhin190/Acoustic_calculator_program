@@ -246,12 +246,15 @@
           :info="info"
         />
         <button class="beforert60cal" @click="calculateRt">Calculate</button>
-        <div v-if="GStore.graphBefore != null">
-          <span> 250 Hz : {{ GStore.graphBefore.at250 }}</span>
-          <span> 500 Hz :{{ GStore.graphBefore.at500 }}</span>
-          <span> 1k Hz :{{ GStore.graphBefore.atK1 }}</span>
-          <span> 2k Hz :{{ GStore.graphBefore.atK2 }}</span>
-          <span> 4k Hz :{{ GStore.graphBefore.atK4 }}</span>
+        <div>
+          <div class="hzelement_bf" v-if="GStore.graphBefore != null">
+            <span style="color: #ffb703">RT60 Value before improve | </span>
+            <span> @250 Hz : {{ GStore.graphBefore.at250 }}</span>
+            <span> @500 Hz :{{ GStore.graphBefore.at500 }}</span>
+            <span> @1k Hz :{{ GStore.graphBefore.atK1 }}</span>
+            <span> @2k Hz :{{ GStore.graphBefore.atK2 }}</span>
+            <span> @4k Hz :{{ GStore.graphBefore.atK4 }}</span>
+          </div>
         </div>
       </div>
 
@@ -300,17 +303,25 @@
         <button class="beforert60cal" @click="calculateUpdate">
           Calculate
         </button>
-        <div v-if="GStore.graphAfter != null">
-          <span> 250 Hz : {{ GStore.graphAfter.at250 }}</span>
-          <span> 500 Hz :{{ GStore.graphAfter.at500 }}</span>
-          <span> 1k Hz :{{ GStore.graphAfter.atK1 }}</span>
-          <span> 2k Hz :{{ GStore.graphAfter.atK2 }}</span>
-          <span> 4k Hz :{{ GStore.graphAfter.atK4 }}</span>
+        <div>
+          <div class="hzelement_bf" v-if="GStore.graphAfter != null">
+            <span style="color: #ffb703">RT60 Value after improve | </span>
+            <span> 250 Hz : {{ GStore.graphAfter.at250 }}</span>
+            <span> 500 Hz :{{ GStore.graphAfter.at500 }}</span>
+            <span> 1k Hz :{{ GStore.graphAfter.atK1 }}</span>
+            <span> 2k Hz :{{ GStore.graphAfter.atK2 }}</span>
+            <span> 4k Hz :{{ GStore.graphAfter.atK4 }}</span>
+          </div>
         </div>
         <div v-if="GStore.graphAfter != null" class="graph">
           <BarChart2 />
         </div>
       </div>
+    </div>
+  </section>
+  <section class="footer">
+    <div>
+      <span>Hans Solution</span>
     </div>
   </section>
 </template>
@@ -460,7 +471,7 @@ span {
   font-size: 16px;
   text-transform: uppercase;
   cursor: pointer;
-  background: #888bd2;
+  background: #f4a301;
   border: 3px solid #121212;
   border-radius: 3px;
   color: #fff;
@@ -468,7 +479,7 @@ span {
   letter-spacing: 1px;
   box-shadow: 5px 5px 0px #000000;
   width: 15%;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
@@ -516,6 +527,17 @@ span {
   border-radius: 25px;
   background-color: #ffffff;
   box-shadow: 5px 5px 0px #000000;
+}
+.hzelement_bf {
+  background: white;
+  border: solid;
+  width: 48%;
+  margin-left: 325px;
+}
+.footer {
+  color: white;
+  background-color: black;
+  padding-bottom: 10px;
 }
 @import 'animate.css';
 </style>

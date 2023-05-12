@@ -11,8 +11,10 @@
           <div class="arealabel col-lg-2">
             <span>Area</span>
           </div>
-          <div class="value col-lg-2">
-            <span> {{ keep }} </span>
+          <div class="valuebox col-lg-2">
+            <div class="value">
+              <span> {{ keep }} </span>
+            </div>
           </div>
           <div class="col-lg-2">
             <input class="inputbox" type="text" v-model="input" required />
@@ -26,7 +28,7 @@
             />
           </div>
           <div class="addBox col-lg-2">
-            <button class="btn btn-warning">+Add materials</button>
+            <button class="btn addmat">+Add materials</button>
           </div>
         </div>
       </div>
@@ -137,11 +139,10 @@ export default {
 <style>
 .greybox {
   margin: auto;
-  width: 100%;
+  width: 90%;
   border: solid;
   padding: 10px;
   background: #2a2e34;
-  box-shadow: 5px 5px 5px 5px #000000;
 }
 .inputcol {
   margin-top: 8px;
@@ -181,5 +182,15 @@ export default {
 .arealabel {
   margin-top: 7.5px;
   color: white;
+}
+.addmat {
+  background-color: #f4a301;
+}
+.addmat:hover {
+  background-color: #fed053;
+}
+.valuebox {
+  width: 10%;
+  border-right: solid white;
 }
 </style>

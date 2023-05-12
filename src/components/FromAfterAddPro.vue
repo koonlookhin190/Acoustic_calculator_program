@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <form @submit.prevent="onDelete">
-      <div class="col-lg-12 boxtest animate__animated animate__fadeInRight">
+      <div class="col-lg-12 boxtestpro animate__animated animate__fadeInRight">
         <div class="row">
           <span class="title">Product {{ info.name }}</span>
           <div class="textelement">
@@ -81,12 +81,12 @@ export default {
 </script>
 
 <style>
-.boxtest {
+.boxtestpro {
   margin: auto;
-  width: 100%;
+  width: 75%;
   border: solid;
   padding: 10px;
-  background-color: #faf0e6;
+  background-color: white;
 }
 .textelement {
   margin-top: 8px;
